@@ -8,7 +8,6 @@ import {
 
 function ColorModeSwitch() {
   const { toggleColorMode, colorMode } = useColorMode();
-  console.log(colorMode);
 
   return (
     <HStack>

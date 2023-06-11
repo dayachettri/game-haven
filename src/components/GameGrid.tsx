@@ -6,17 +6,17 @@ import GameCardContainer from './GameCardContainer';
 
 function GameGrid() {
   const { games, error, isLoading } = useGames();
-  const skeletons = [1, 2, 3, 4, 5, 6];
+  const skeletons = Array.from({ length: 6 }, (_, index) => index + 1);
 
   const renderedGameCards: JSX.Element[] = games.map(game => (
-    <GameCardContainer>
-      <GameCard game={game} key={game.id} />
+    <GameCardContainer key={game.id}>
+      <GameCard game={game} />
     </GameCardContainer>
   ));
 
   const renderedSkeletons: JSX.Element[] = skeletons.map(skeleton => (
-    <GameCardContainer>
-      <GameCardSkeleton key={skeleton} />
+    <GameCardContainer key={skeleton}>
+      <GameCardSkeleton />
     </GameCardContainer>
   ));
 
