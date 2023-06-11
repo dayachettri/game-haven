@@ -13,4 +13,5 @@ function CriticScore({ score }: Props) {
     </Badge>
   );
 }
+
 export default CriticScore;
