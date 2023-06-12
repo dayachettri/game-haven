@@ -25,18 +25,17 @@ function GameGrid({ gameQuery }: Props) {
     </GameCardContainer>
   ));
 
+  if (error) return <Text>{error}</Text>;
+
   return (
-    <>
-      {error && <Text>{error}</Text>}
-      <SimpleGrid
-        columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
-        spacing={6}
-        padding="10px"
-      >
-        {isLoading && renderedSkeletons}
-        {renderedGameCards}
-      </SimpleGrid>
-    </>
+    <SimpleGrid
+      columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
+      spacing={6}
+      padding="10px"
+    >
+      {isLoading && renderedSkeletons}
+      {renderedGameCards}
+    </SimpleGrid>
   );
 }
 
