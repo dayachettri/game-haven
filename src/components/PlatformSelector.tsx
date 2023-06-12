@@ -11,22 +11,19 @@ interface Props {
 function PlatformSelector({ onSelectPlatform, selectedPlatform }: Props) {
   const { data, error } = usePlatforms();
 
+  const renderedPlatformItems: JSX.Element[] = data.map(platform => (
+    <MenuItem onClick={() => onSelectPlatform(platform)} key={platform.id}>
+      {platform.name}
+    </MenuItem>
+  ));
+
   if (error) return null;
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<BsChevronDown />}>
         {selectedPlatform?.name || 'Platforms'}
       </MenuButton>
-      <MenuList>
-        {data.map(platform => (
-          <MenuItem
-            onClick={() => onSelectPlatform(platform)}
-            key={platform.id}
-          >
-            {platform.name}
-          </MenuItem>
-        ))}
-      </MenuList>
+      <MenuList>{renderedPlatformItems}</MenuList>
     </Menu>
   );
 }

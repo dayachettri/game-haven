@@ -18,22 +18,22 @@ function SortSelector({ onSelectSortOrder, sortOrder }: Props) {
 
   const currentSortOrder = sortOrders.find(order => order.value === sortOrder);
 
+  const renderedSortSelectors: JSX.Element[] = sortOrders.map(order => (
+    <MenuItem
+      onClick={() => onSelectSortOrder(order.value)}
+      key={order.value}
+      value={order.value}
+    >
+      {order.label}
+    </MenuItem>
+  ));
+
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<BsChevronDown />}>
         Order by: {currentSortOrder?.label || 'Relevance'}
       </MenuButton>
-      <MenuList>
-        {sortOrders.map(order => (
-          <MenuItem
-            onClick={() => onSelectSortOrder(order.value)}
-            key={order.value}
-            value={order.value}
-          >
-            {order.label}
-          </MenuItem>
-        ))}
-      </MenuList>
+      <MenuList>{renderedSortSelectors}</MenuList>
     </Menu>
   );
 }

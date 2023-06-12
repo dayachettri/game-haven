@@ -30,13 +30,11 @@ function PlatformIconList({ platforms }: Props) {
     web: BsGlobe,
   };
 
-  return (
-    <HStack marginY={1}>
-      {platforms.map(platform => (
-        <Icon key={platform.id} as={iconMap[platform.slug]} color="gray.500" />
-      ))}
-    </HStack>
-  );
+  const renderedPlatformIcons: JSX.Element[] = platforms.map(platform => (
+    <Icon key={platform.id} as={iconMap[platform.slug]} color="gray.500" />
+  ));
+
+  return <HStack marginY={1}>{renderedPlatformIcons}</HStack>;
 }
 
 export default PlatformIconList;
