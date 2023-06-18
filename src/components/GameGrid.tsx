@@ -31,6 +31,7 @@ function GameGrid({ gameQuery }: Props) {
               <GameCardSkeleton />
             </GameCardContainer>
           ))}
+
         {data?.pages.map((page, index) => (
           <React.Fragment key={index}>
             {page.results.map(game => (
@@ -41,8 +42,9 @@ function GameGrid({ gameQuery }: Props) {
           </React.Fragment>
         ))}
       </SimpleGrid>
+
       {hasNextPage && (
-        <Button onClick={fetchNextPage} marginY={5}>
+        <Button onClick={() => fetchNextPage()} marginY={5}>
           {isFetchingNextPage ? 'Loading...' : 'Load More'}
         </Button>
       )}
